@@ -1,0 +1,79 @@
+﻿<Page
+    x:Class="dl_uwp.DownloaderViewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:dl_uwp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <XamlUICommand 
+            x:FieldModifier="public"
+            x:Name="NewBrowserCommand" 
+            Description="Create new browser window."
+            Label="New browser"
+            Command="{x:Bind Commands.NewBrowserCommand}"
+            >
+            <XamlUICommand.IconSource>
+                <SymbolIconSource Symbol="NewWindow" />
+            </XamlUICommand.IconSource>
+        </XamlUICommand>
+        <XamlUICommand 
+            x:FieldModifier="public"
+            x:Name="CloseAllBrowsersCommand" 
+            Description="Close all browsers window."
+            Label="Close all browsers"
+            Command="{x:Bind Commands.CloseAllBrowsersCommand}"
+            >
+
+            <XamlUICommand.IconSource>
+                <SymbolIconSource Symbol="Clear" />
+            </XamlUICommand.IconSource>
+        </XamlUICommand>
+    </Page.Resources>
+    
+    <StackPanel>
+        <MenuBar>
+            <MenuBarItem Title="File">
+                <MenuFlyoutItem Text="New"/>
+                <MenuFlyoutItem Text="Open..."/>
+                <MenuFlyoutItem Text="Save"/>
+                <MenuFlyoutItem Text="Exit"/>
+            </MenuBarItem>
+
+            <MenuBarItem Title="Edit">
+                <MenuFlyoutItem Text="Undo"/>
+                <MenuFlyoutItem Text="Cut"/>
+                <MenuFlyoutItem Text="Copy"/>
+                <MenuFlyoutItem Text="Paste"/>
+            </MenuBarItem>
+
+            <MenuBarItem Title="Help">
+                <MenuFlyoutItem Text="About"/>
+            </MenuBarItem>
+        </MenuBar>
+
+        <StackPanel Orientation="Horizontal">
+            <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
+                <AppBarButton Command="{StaticResource NewBrowserCommand}"/>
+                <AppBarButton Command="{StaticResource CloseAllBrowsersCommand}"/>
+
+                <AppBarButton Icon="Edit" Label="Edit"/>
+                <AppBarButton Icon="Share" Label="Share"/>
+                <CommandBar.SecondaryCommands>
+                    <AppBarButton Icon="Setting" Label="Settings">
+                        <AppBarButton.KeyboardAccelerators>
+                            <KeyboardAccelerator Modifiers="Control" Key="I" />
+                        </AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                </CommandBar.SecondaryCommands>
+            </CommandBar>
+        </StackPanel>
+
+        <Grid>
+
+        </Grid>
+    </StackPanel>
+</Page>
